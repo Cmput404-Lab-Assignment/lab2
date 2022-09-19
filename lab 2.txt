@@ -1,0 +1,55 @@
+
+
+1. How do you specify a TCP socket in Python?
+First we will use below code：
+import socket
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+Then I will below to create TCP- socket :
+bind()
+listen()
+accept()
+connect()
+send()
+recv()
+
+Smmary of use:
+For server: bind(), listen() and accept()
+For client: connect()
+Both: send() and recv()
+
+2: What is the difference between a client socket and a server socket in Python?
+The main difference is how the connection is created
+
+Client: connect() to a listen() server. The client initiates connections. Request a data.
+
+Server: bind(), listen(), accept() and connect() from a client. Received a data.
+
+3: How do we instruct the OS to let us reuse the same bind port?
+
+First we use below code to create s:
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+
+Then I use the below to reuse the same bind port:
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+        
+
+4: What information do we get about incoming connections?
+
+We need conn and address. where conn is a new socket object usable to send and receive data on the connection, 
+and address is the address bound to the socket on the other end of the connection
+
+5: What is returned by recv() from the server after it is done sending the HTTP request?
+
+Receive data from the socket. The return value is a bytes object representing the data received.
+
+6: Provide a link to your code on GitHub.
+
+https://github.com/Cmput404-Lab-Assignment/lab2
+
+
+README :
+The answer of q 4 is from the link https://docs.python.org/3/library/socket.html#socket.socket.accept
+
+The answer from q5 from the link https://docs.python.org/3/library/socket.html#socket.socket.recv
